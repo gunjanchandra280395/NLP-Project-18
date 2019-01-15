@@ -306,23 +306,20 @@ def Wn_similarity(sentence1, sentence2):
     score, count = 0.0, 0
  
     # For each word in the first sentence
-    best_score = [0.0]
+    best_scores = [0.0]
     for ss1 in synsets1:
         for ss2 in synsets2:
-            best1_score=ss1.path_similarity(ss2)
-        if best1_score is not None:
-            best_score.append(best1_score)
-        max1=max(best_score)
-        if best_score is not None:
-            score += max1
+            eachscore=ss1.path_similarity(ss2)
+            if eachscore is not None:
+                best_scores.append(eachscore)
+        max1=max(best_scores)
+        if best_scores is not None:
+            score = score + max1
         if max1 is not 0.0:
-            count += 1
-        best_score=[0.0]
-    print(score/count)      
-   
+            count = count + 1  
+    #print(score/count)      
     # Average the values
-    score /= count
-    return score
+    return score / count
 
 print(wdStr)
 # Snippetlist Wn_similarity
@@ -380,26 +377,23 @@ def tagged_to_synset(word, tag):
 #     synsets1 = [ss for ss in synsets1 if ss]
 #     synsets2 = [ss for ss in synsets2 if ss]
  
-#     score, count = 0.0, 0
+#    score, count = 0.0, 0
  
-#     # For each word in the first sentence
-#     best_score = [0.0]
-#     for ss1 in synsets1:
-#         for ss2 in synsets2:
-#             best1_score=ss1.path_similarity(ss2)
-#         if best1_score is not None:
-#             best_score.append(best1_score)
-#         max1=max(best_score)
-#         if best_score is not None:
-#             score += max1
-#         if max1 is not 0.0:
-#             count += 1
-#         best_score=[0.0]
-#     print(score/count)      
-   
-#     # Average the values
-#     score /= count
-#     return score
+    # For each word in the first sentence
+#    best_scores = [0.0]
+#   for ss1 in synsets1:
+#        for ss2 in synsets2:
+#            eachscore=ss1.path_similarity(ss2)
+#            if eachscore is not None:
+#                best_scores.append(eachscore)
+#        max1=max(best_scores)
+#        if best_scores is not None:
+#            score = score + max1
+#        if max1 is not 0.0:
+#            count = count + 1  
+    #print(score/count)      
+    # Average the values
+#    return score / count
     
 # wnSim=sentence_similarity(sentence[0],sentence[1]) ################# this no need
 # print('Sim_sentence=',wnSim) # 0.6666666666666666
