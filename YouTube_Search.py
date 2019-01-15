@@ -8,7 +8,6 @@ import json
 import pprint
 import json
 import pandas as pd
-import PP
 #from PP import S1, S2
 sentence1 = ""
 sentence2 = ""
