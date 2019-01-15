@@ -10,8 +10,8 @@ import PP
 # from PP import S2
 
 
-my_api_key = "AIzaSyBIh37Q-078oVFUL5fu6XivIKqnqqOvB3M"
-my_cse_id = "009592823161165690347:wrkvjhigeuw"
+my_api_key = "..."
+my_cse_id = "..."
 
 sentence1 = ""
 sentence2 = ""
@@ -316,25 +316,22 @@ for i in range(0,9):
         synsets2 = [ss for ss in synsets2 if ss]
      
         score, count = 0.0, 0
-     
+ 
         # For each word in the first sentence
-        best_score = [0.0]
+        best_scores = [0.0]
         for ss1 in synsets1:
             for ss2 in synsets2:
-                best1_score=ss1.path_similarity(ss2)
-            if best1_score is not None:
-                best_score.append(best1_score)
-            max1=max(best_score)
-            if best_score is not None:
-                score += max1
+                eachscore=ss1.path_similarity(ss2)
+                if eachscore is not None:
+                    best_scores.append(eachscore)
+            max1=max(best_scores)
+            if best_scores is not None:
+                score = score + max1
             if max1 is not 0.0:
-                count += 1
-            best_score=[0.0]
+                count = count + 1  
         #print(score/count)      
-       
         # Average the values
-        score /= count
-        return score
+        return score / count
 
     #print(wdStr)
     # Snippetlist Wn_similarity
