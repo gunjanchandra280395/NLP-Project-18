@@ -258,7 +258,7 @@ print('JSim_stem=',j_result2)             # 0.11904761904761904
 
 
 #-----------------Wordnet Similarity for Snippetlist---------------------------------#
-
+### refer to https://nlpforhackers.io/wordnet-sentence-similarity/###
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
 import numpy as np
@@ -336,6 +336,7 @@ print('wnSim_stemDoc=',wn_result2)   # 0.10194849748482962
 #--------------------- WordNet semantic similarity for sentence------------------------#
 
 # WordNet semantic similarity-only word_tokenization-sentence
+### refer to https://nlpforhackers.io/wordnet-sentence-similarity/###
 from nltk import word_tokenize, pos_tag
 from nltk.corpus import wordnet as wn
 import numpy as np
@@ -456,8 +457,9 @@ print('ExpandJaccardSim_sentence=',ej_result2)    # 0.4444444444444444
 #s1=['ai','human', 'alway', 'friendli']
 #s2=['ai', 'friend', 'friendli'] 
 #result3 = jaccard_similarity(get_expandwds(s1),get_expandwds(s2))print('ExpandJaccardSim_sentence=',result3)    # 0.5
-------------Wikipedia based similarity----------------#
 
+#------------Wikipedia based similarity----------------#
+### fuctions of getting vector and sentence similarity refers to https://github.com/neomoha/python-lsi-similarity/blob/master/model.py
 import gensim
 from gensim.corpora import MmCorpus
 from gensim import corpora, models, similarities
