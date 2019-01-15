@@ -10,8 +10,8 @@ import PP
 # from PP import S2
 
 
-my_api_key = "AIzaSyBIh37Q-078oVFUL5fu6XivIKqnqqOvB3M"
-my_cse_id = "009592823161165690347:wrkvjhigeuw"
+my_api_key = "..."
+my_cse_id = "..."
 
 def googleSearch_snippet(searchSentence):
     googleSearchSnippetlist = []
