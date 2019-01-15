@@ -7,7 +7,7 @@ from PP import S1, S2
 # Bing API search
 import requests
 
-subscription_key = "00056c9319984c27bad2fad86125985b"
+subscription_key = "..."
 assert subscription_key
 
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
@@ -311,23 +311,20 @@ def Wn_similarity(sentence1, sentence2):
     score, count = 0.0, 0
  
     # For each word in the first sentence
-    best_score = [0.0]
+    best_scores = [0.0]
     for ss1 in synsets1:
         for ss2 in synsets2:
-            best1_score=ss1.path_similarity(ss2)
-        if best1_score is not None:
-            best_score.append(best1_score)
-        max1=max(best_score)
-        if best_score is not None:
-            score += max1
+            eachscore=ss1.path_similarity(ss2)
+            if eachscore is not None:
+                best_scores.append(eachscore)
+        max1=max(best_scores)
+        if best_scores is not None:
+            score = score + max1
         if max1 is not 0.0:
-            count += 1
-        best_score=[0.0]
-    print(score/count)      
-   
+            count = count + 1  
+    #print(score/count)      
     # Average the values
-    score /= count
-    return score
+    return score / count
 
 print(wdStr)
 # Snippetlist Wn_similarity
