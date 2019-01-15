@@ -7,7 +7,7 @@ from PP import S1, S2
 # Bing API search
 import requests
 
-subscription_key = "00056c9319984c27bad2fad86125985b"
+subscription_key = "..."
 assert subscription_key
 
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
@@ -323,112 +323,30 @@ for i in range(0,9):
         synsets2 = [ss for ss in synsets2 if ss]
      
         score, count = 0.0, 0
-     
+ 
         # For each word in the first sentence
-        best_score = [0.0]
+        best_scores = [0.0]
         for ss1 in synsets1:
             for ss2 in synsets2:
-                best1_score=ss1.path_similarity(ss2)
-            if best1_score is not None:
-                best_score.append(best1_score)
-            max1=max(best_score)
-            if best_score is not None:
-                score += max1
+                eachscore=ss1.path_similarity(ss2)
+                if eachscore is not None:
+                    best_scores.append(eachscore)
+            max1=max(best_scores)
+            if best_scores is not None:
+                score = score + max1
             if max1 is not 0.0:
-                count += 1
-            best_score=[0.0]
-        # print(score/count)      
-       
+                count = count + 1  
+        #print(score/count)      
         # Average the values
-        score /= count
-        return score
+        return score / count
 
     # print(wdStr)
     # Snippetlist Wn_similarity
     wn_result1 = Wn_similarity(wdStr[0], wdStr[1])
     print('wnSim_stopwdStr=',wn_result1) # 0.3333333333333333
     #wn_result2 = Wn_similarity(stem_doc[0][0], stem_doc[1][0])
-    #print('wnSim_stemDoc=',wn_result2)   # 0.10194849748482962
-
-
-
-    #--------------------- WordNet semantic similarity for sentence------------------------#
-
-    # WordNet semantic similarity-only word_tokenization-sentence
-    from nltk import word_tokenize, pos_tag
-    from nltk.corpus import wordnet as wn
-    import numpy as np
-    def penn_to_wn(tag):
-        """ Convert between a Penn Treebank tag to a simplified Wordnet tag """
-        if tag.startswith('N'):
-            return 'n'
-     
-        if tag.startswith('V'):
-            return 'v'
-     
-        if tag.startswith('J'):
-            return 'a'
-     
-        if tag.startswith('R'):
-            return 'r'
-     
-        return None
-     
-    def tagged_to_synset(word, tag):
-        wn_tag = penn_to_wn(tag)
-        if wn_tag is None:
-            return None
-     
-        try:
-            return wn.synsets(word, wn_tag)[0]
-        except:
-            return None
-     
-    # def sentence_similarity(sentence1, sentence2):
-    #     """ compute the sentence similarity using Wordnet """
-    #     # Tokenize and tag
-    #     sentence1 = pos_tag(word_tokenize(sentence1))
-    #     sentence2 = pos_tag(word_tokenize(sentence2))
-     
-    #     # Get the synsets for the tagged words
-    #     synsets1 = [tagged_to_synset(*tagged_word) for tagged_word in sentence1]
-    #     synsets2 = [tagged_to_synset(*tagged_word) for tagged_word in sentence2]
-     
-    #     # Filter out the Nones
-    #     synsets1 = [ss for ss in synsets1 if ss]
-    #     synsets2 = [ss for ss in synsets2 if ss]
-     
-    #     score, count = 0.0, 0
-     
-    #     # For each word in the first sentence
-    #     best_score = [0.0]
-    #     for ss1 in synsets1:
-    #         for ss2 in synsets2:
-    #             best1_score=ss1.path_similarity(ss2)
-    #         if best1_score is not None:
-    #             best_score.append(best1_score)
-    #         max1=max(best_score)
-    #         if best_score is not None:
-    #             score += max1
-    #         if max1 is not 0.0:
-    #             count += 1
-    #         best_score=[0.0]
-    #     print(score/count)      
-       
-    #     # Average the values
-    #     score /= count
-    #     return score
-        
-    # wnSim=sentence_similarity(sentence[0],sentence[1]) ################# this no need
-    # print('Sim_sentence=',wnSim) # 0.6666666666666666
-
-    # JSim=jaccard_similarity(word_tokenize(sentence[0]),word_tokenize(sentence[1])) ######################### this no need
-    # print('JSim_sentence=',JSim) # 0.38461538461538464
-
-    #s1=['ai','human', 'alway', 'friendli']
-    #s2=['ai', 'friend', 'friendli']
-    #result3 = jaccard_similarity(s1,s2)
-    #print('JSim_sentence=',result3)
+    #print('wnSim_stemDoc=',wn_result2)   # 0.1019484974848296
+    
 
     #------------------ExpandJaccardSimilarity--------------------------#
 
