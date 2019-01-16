@@ -15,7 +15,7 @@ import PP
 # Search for DEVELOPER_KEY in this code to find the correct place to provide that key..
 # Please ensure that you have enabled the YouTube Data API for your project from your Google account.
 
-DEVELOPER_KEY = 'AIzaSyBN0zRiSDC_IdQrYWQaTcbCheyKLRopqOA'
+DEVELOPER_KEY = '...'
 YOUTUBE_API_SERVICE_NAME = 'youtube'
 YOUTUBE_API_VERSION = 'v3'
 
@@ -476,7 +476,7 @@ def get_sentence_sim(S1,S2):
     vec_lsi2 = [val for idx,val in model_lsi[vec_bow2]]
     return cosine(vec_lsi1,vec_lsi2)
 
-wiki_sim=get_sentence_sim(sentence1,sentence2)
+wiki_sim=get_sentence_sim(sentence[0],sentence[1])
 print('wikipedia similarity:',wiki_sim)
 
 
