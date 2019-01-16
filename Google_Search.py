@@ -521,7 +521,7 @@ for i in range(0,9):
         
         #sentence1 = PP.getSentences()[0]
         #sentence2 = PP.getSentences()[1]    
-        wiki_sim=get_sentence_sim(sentence1,sentence2)
+        wiki_sim=get_sentence_sim(sentence[0],sentence[1])
         print('Wikipedia similarity:')
     	  print(wiki_sim)
 
